@@ -1,1 +1,0 @@
-# With-Open-and-Closed-Principle
