@@ -1,55 +1,39 @@
 package com.keyword;
 
-interface Calculation
+interface PaymentType
 {
-     void operations(double number1,double number2);
+    public void processPayment();
 }
 
-class Add implements Calculation
+class Payments
 {
-    public void operations(double number1, double number2)
+    public void paymentProcessing(PaymentType paymentType)
     {
-        System.out.println("Addition of "+number1+" and "+number2+" : "+(number1+number2));
+        paymentType.processPayment();
     }
 }
 
-class Subtraction implements Calculation
+class Cash implements PaymentType
 {
-    public void operations(double number1, double number2)
+    public void processPayment()
     {
-        System.out.println("Subtraction of "+number1+" and "+number2+" : "+(number1-number2));
+        System.out.println("Amount is cash type");
     }
 }
 
-class Multiplication implements Calculation
+class DebitCard implements PaymentType
 {
-    public void operations(double number1, double number2)
+    public void processPayment()
     {
-        System.out.println("Multiplication of "+number1+" and "+number2+" : "+(number1*number2));
+        System.out.println("Amount through debit.");
     }
 }
 
-class Division implements Calculation
+class CreditCard implements PaymentType
 {
-    public void operations(double number1, double number2)
+    public void processPayment()
     {
-        System.out.println("Division of  "+number1+" and "+number2+" : "+(number1/number2));
-    }
-}
-
-class Remainder implements Calculation
-{
-    public void operations(double number1, double number2)
-    {
-        System.out.println("Remainder : "+number1+" and  "+number2+" : "+(number1%number2));
-    }
-}
-
-class Equal implements Calculation
-{
-    public void operations(double number1, double number2)
-    {
-        System.out.println("Does "+number1+" and  "+number2+" are Equal : "+(number1==number2));
+        System.out.println("Amount through credit.");
     }
 }
 
@@ -57,18 +41,12 @@ public class OpenAndClosedPrincipleUsing
 {
     public static void main(String[] args)
     {
-        Add add = new Add();
-        Subtraction subtract = new Subtraction();
-        Multiplication multiplication = new Multiplication();
-        Division division = new Division();
-        Remainder remainder = new Remainder();
-        Equal equal = new Equal();
-        add.operations(5,10);
-        subtract.operations(10,5);
-        multiplication.operations(10,5);
-        division.operations(10,5);
-        remainder.operations(10,5);
-        equal.operations(10,10);
-
+        Cash cash = new Cash();
+        DebitCard debitCard = new DebitCard();
+        CreditCard creditCard = new CreditCard();
+        Payments payments = new Payments();
+        payments.paymentProcessing(cash);
+        payments.paymentProcessing(debitCard);
+        payments.paymentProcessing(creditCard);
     }
 }
