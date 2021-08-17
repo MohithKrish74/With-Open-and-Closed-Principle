@@ -48,5 +48,6 @@ public class OpenAndClosedPrincipleUsing
         payments.paymentProcessing(cash);
         payments.paymentProcessing(debitCard);
         payments.paymentProcessing(creditCard);
+   
     }
 }
